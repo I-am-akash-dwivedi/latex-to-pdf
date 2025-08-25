@@ -11,11 +11,13 @@ RUN apt-get update && apt-get install -y \
 # Set work directory
 WORKDIR /app
 
-# Copy files
+# Copy dependency file and install Python deps
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy application files
 COPY main.py .
+COPY resume.cls .
 
 # Expose FastAPI port
 EXPOSE 8000
